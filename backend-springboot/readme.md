@@ -18,4 +18,7 @@ unzip my-backend.zip -d backend-springboot
 
 # Compile et lance le projet avec maven wrapper
 ./mvnw spring-boot:run
+
+# mode production
+./mvnw spring-boot:run -Dspring-boot.run.profiles=prod
 ```

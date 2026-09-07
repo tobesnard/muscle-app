@@ -1,6 +1,7 @@
 package com.backend.springboot;
 
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.ObjectMapper;
@@ -20,15 +21,18 @@ public class AppConfigService {
     private static final String CONFIG_RESOURCE_PATH = "static/config/app-config.json";
 
     private final ObjectMapper objectMapper;
+    private final String apiBaseUrl;
 
     /**
      * Initialise le service avec le convertisseur JSON fourni par Spring.
      *
      * @param objectMapper convertisseur utilisé pour lire le fichier de
      *                     configuration
+     * @param apiBaseUrl   URL de base de l'API définie pour le profil actif
      */
-    public AppConfigService(ObjectMapper objectMapper) {
+    public AppConfigService(ObjectMapper objectMapper, @Value("${app.api.base-url}") String apiBaseUrl) {
         this.objectMapper = objectMapper;
+        this.apiBaseUrl = apiBaseUrl;
     }
 
     /**
@@ -62,10 +66,30 @@ public class AppConfigService {
     private Map<String, Object> loadConfig() throws IOException {
         ClassPathResource configResource = new ClassPathResource(CONFIG_RESOURCE_PATH);
         try (InputStream inputStream = configResource.getInputStream()) {
-            return objectMapper.readValue(
+            Map<String, Object> config = objectMapper.readValue(
                     inputStream,
                     new TypeReference<LinkedHashMap<String, Object>>() {
                     });
+            setApiBaseUrl(config);
+            return config;
+        }
+    }
+
+    /**
+     * Remplace l'URL définie dans le fichier JSON par celle du profil Spring actif.
+     *
+     * @param config configuration désérialisée
+     * @throws IOException si la section {@code api} est absente ou invalide
+     */
+    private void setApiBaseUrl(Map<String, Object> config) throws IOException {
+        Object api = config.get("api");
+        if (!(api instanceof Map<?, ?> properties)) {
+            throw new IOException("La section 'api' est absente ou invalide dans la configuration.");
+        }
+        if (properties instanceof Map<?, ?>) {
+            @SuppressWarnings("unchecked")
+            Map<String, Object> apiProperties = (Map<String, Object>) properties;
+            apiProperties.put("baseUrl", apiBaseUrl);
         }
     }
 

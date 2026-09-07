@@ -27,11 +27,11 @@
     },
     "ui": {
         "theme": {
-            "defaultMode": "system",
+            "defaultMode": "dark",
             "allowUserToggle": true,
             "colors": {
-                "primary": "#3B82F6",
-                "secondary": "#64748B",
+                "primary": "#FF4F00",
+                "secondary": "#00E5FF",
                 "accent": "#F59E0B",
                 "success": "#10B981",
                 "warning": "#EF4444",
@@ -43,9 +43,9 @@
                     "border": "#E2E8F0"
                 },
                 "dark": {
-                    "background": "#0F172A",
-                    "surface": "#1E293B",
-                    "text": "#F8FAFC",
+                    "background": "#1A1A22",
+                    "surface": "#292932",
+                    "text": "#FFFFFF",
                     "border": "#334155"
                 }
             },
@@ -80,5 +80,8 @@
     "api": {
         "baseUrl": "https://api.muscle-app.com/v1",
         "timeoutMs": 5000
+    },
+    "resources": {
+        "icon": "img/icon.png"
     }
 }
