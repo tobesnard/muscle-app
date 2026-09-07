@@ -1,0 +1,84 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "app": {
+        "name": "Muscle App",
+        "slug": "muscle-app",
+        "version": "0.2.0",
+        "environment": "development",
+        "metadata": {
+            "title": "Muscle App",
+            "description": "Muscle App est une application dédiée à la pratique de la musculation",
+            "author": "Tony Besnard",
+            "language": "fr",
+            "charset": "UTF-8",
+            "keywords": [
+                "web",
+                "application",
+                "dashboard"
+            ],
+            "favicon": "/assets/icons/favicon.ico",
+            "openGraph": {
+                "ogTitle": "Muscle App",
+                "ogDescription": "Muscle App est une application dédiée à la pratique de la musculation.",
+                "ogImage": "/assets/images/og-cover.png",
+                "ogType": "website"
+            }
+        }
+    },
+    "ui": {
+        "theme": {
+            "defaultMode": "system",
+            "allowUserToggle": true,
+            "colors": {
+                "primary": "#3B82F6",
+                "secondary": "#64748B",
+                "accent": "#F59E0B",
+                "success": "#10B981",
+                "warning": "#EF4444",
+                "info": "#06B6D4",
+                "light": {
+                    "background": "#FFFFFF",
+                    "surface": "#F8FAFC",
+                    "text": "#0F172A",
+                    "border": "#E2E8F0"
+                },
+                "dark": {
+                    "background": "#0F172A",
+                    "surface": "#1E293B",
+                    "text": "#F8FAFC",
+                    "border": "#334155"
+                }
+            },
+            "typography": {
+                "fontFamily": "Inter, system-ui, sans-serif",
+                "fontSizeBase": "16px",
+                "borderRadius": "8px"
+            }
+        },
+        "layout": {
+            "header": {
+                "fixed": true,
+                "showLogo": true,
+                "showSearch": true
+            },
+            "sidebar": {
+                "enabled": true,
+                "defaultCollapsed": false,
+                "position": "left"
+            },
+            "footer": {
+                "enabled": true,
+                "copyright": "© 2026 Muscle App. Tous droits réservés."
+            }
+        }
+    },
+    "features": {
+        "darkMode": true,
+        "notifications": true,
+        "analytics": false
+    },
+    "api": {
+        "baseUrl": "https://api.muscle-app.com/v1",
+        "timeoutMs": 5000
+    }
+}

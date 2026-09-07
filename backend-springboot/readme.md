@@ -2,7 +2,7 @@
 
 ## création du projet
 
-```
+```powershell
 curl https://start.spring.io/starter.zip \
   -d dependencies=web,data-jpa,h2,lombok \
   -d language=java \
@@ -16,5 +16,6 @@ unzip my-backend.zip -d backend-springboot
 
 ./mvnw -v
 
+# Compile et lance le projet avec maven wrapper
 ./mvnw spring-boot:run
 ```
