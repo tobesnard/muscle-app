@@ -1,5 +1,5 @@
 // services/configService.ts
-
+// Classe TypeScript pure, sans dépendance à React ; ConfigContext.tsx fait le pont.
 export class ConfigService {
     private static instance: ConfigService;
     private configPromise: Promise<Record<string, unknown>> | null = null;

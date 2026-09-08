@@ -1,4 +1,5 @@
-// components/ThemeColors.tsx
+// hooks/useThemeColors.ts
+// Custom hook : combine useEffect + useConfig, ne retourne pas de JSX.
 import { useEffect } from 'react';
 import { useConfig } from '../context/ConfigContext';
 
@@ -41,9 +42,11 @@ const DEFAULT_COLORS: ThemeColorsConfig = {
     },
 };
 
-export function ThemeColors({ children }: { children: React.ReactNode }) {
+// Applique les couleurs de la config comme variables CSS sur la racine du document.
+export function useThemeColors() {
     const { getValue, loading } = useConfig();
 
+    // Manipulation directe du DOM = effet de bord, donc dans un useEffect.
     useEffect(() => {
         if (loading) return;
 
@@ -65,6 +68,4 @@ export function ThemeColors({ children }: { children: React.ReactNode }) {
         root.setProperty('--color-dark-text', colors.dark.text);
         root.setProperty('--color-dark-border', colors.dark.border);
     }, [getValue, loading]);
-
-    return <>{children}</>;
 }
