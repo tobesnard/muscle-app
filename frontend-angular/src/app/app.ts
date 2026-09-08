@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
-import { ConfigService } from './services/config.service';
+import { ConfigService } from '../services/config.service';
 
 interface ColorScheme {
   background: string;

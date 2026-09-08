@@ -1,6 +1,6 @@
 import { Component, inject } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { ConfigService } from "../../app/services/config.service";
+import { ConfigService } from "../../services/config.service";
 
 @Component({
     selector: "app-title",

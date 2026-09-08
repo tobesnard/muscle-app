@@ -83,5 +83,9 @@
     },
     "resources": {
         "icon": "img/icon.png"
+    },
+    "frontends": {
+        "react": "http://localhost:5173",
+        "angular": "http://localhost:4200"
     }
 }
